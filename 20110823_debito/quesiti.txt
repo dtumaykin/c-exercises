@@ -1,0 +1,9 @@
+a)
+
+char * mistero(char c, int num, int *a, char *str);
+
+b)
+    b1) int *
+    b2) 32
+    b3) 30
+    b4) int
