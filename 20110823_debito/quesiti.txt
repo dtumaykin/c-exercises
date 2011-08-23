@@ -1,3 +1,4 @@
+//Dan Tumaykin - August 2011
 a)
 
 char * mistero(char c, int num, int *a, char *str);

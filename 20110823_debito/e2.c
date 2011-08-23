@@ -1,3 +1,4 @@
+//Dan Tumaykin - August 2011
 #include <stdio.h>
 
 #define STR_MAX 256
