@@ -3,8 +3,8 @@
 
 #define N 8
 
-void init1(char mtx[][N], char c);
-void init2(char mtx[][N], char c);
+void init1(char mtx[][N], const char c);
+void init2(char mtx[][N], const char c);
 
 int main()
 {
@@ -35,7 +35,7 @@ int i, j;
     return 0;
 }
 
-void init1(char mtx[][N], char c)
+void init1(char mtx[][N], const char c)
 {
 int i, j;
 
@@ -47,7 +47,7 @@ int i, j;
                 mtx[i][j] = ' ';
 }
 
-void init2(char mtx[][N], char c)
+void init2(char mtx[][N], const char c)
 {
 int i, j;
 
