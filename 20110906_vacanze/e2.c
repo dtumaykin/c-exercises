@@ -27,7 +27,6 @@ int f, p, done = 0;
 	
 	while(!done)
 	{
-		fflush(stdin);
 		switch(menu())
 		{
 			case 's':
@@ -36,6 +35,7 @@ int f, p, done = 0;
 			case 'p':
 				printf("Inserisci numero di posto e fila che vuoi prenotare: ");
 				scanf("%d%d", &p, &f);
+				fflush(stdin);
 				switch(prenota(f, p, teatro, &prenotazione))
 				{
 					case -1:
@@ -120,10 +120,11 @@ int i, j;
 
 	for(i = 0; i < F; i++)
 		for(j = 0; j < P; j++)
-			if(i < L) // se poltronissima
-				tot+=POLT;
-			else 
-				tot+=NORM;
+			if(t[i][j]) // se prenotato
+				if(i < L) // se poltronissima
+					tot+=POLT;
+				else 
+					tot+=NORM;
 	return tot;
 }
 
@@ -150,20 +151,20 @@ int i;
 		}
 		return 0;		
 }
+
 char menu()
 {
-char c;
-
-	printf("\nQuale azione desidera eseguire: \n");
+	char c;
+	printf("\n\nQuale azione desidera eseguire: \n");
 	printf("s: stampare la pianta del teatro\n");
 	printf("p: prenotare un posto\n");
 	printf("a: trovare delle poltrone affiancate\n");
 	printf("i: visualizza incasso\n");
-	printf("e: uscire dal programma\n");
+	printf("u: uscire dal programma\n");
 	
 	printf("\nLa tua scelta: ");
 	scanf("%c", &c);
 	fflush(stdin);
-
-	return c;
+	
+	return tolower(c);
 }
