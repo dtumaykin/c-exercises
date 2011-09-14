@@ -8,8 +8,8 @@ typedef struct {
     int index;
 } set;
 
-int isIn(const set *s, const int num);
-int addEl(set *s, const int new);
+int isIn(const set *s, int num);
+int addEl(set *s, int new);
 set unione(const set *s1, const set *s2);
 
 int main() // main() non era richiesta nell'esercizio, solo le funzioni e le loro chiamate
@@ -55,24 +55,25 @@ int i, temp, status;
     return 0;
 }
 
-int isIn(const set *s, const int num)
+int isIn(const set *s, int num)
 {
 int i;
     
     for(i = 0; i <= s->index; i++)
         if(s->elem[i] == num)
             return 1;
+			
     return 0;
 }
 
-int addEl(set *s, const int new)
+int addEl(set *s, int new)
 {
     if(!isIn(s, new))
     {
-        s->elem[s->index + 1] = new; //oppure in 1 sola righa: s->elem[++(s->index)] = new;
-        s->index++;
+        s->elem[++s->index] = new; //oppure in 1 sola righa: s->elem[++(s->index)] = new;
         return 1;
     }
+	
     return 0;
 }       
 
@@ -84,19 +85,11 @@ set result;
     result.index = -1; // init new set
 
     for(i = 0; i <= s1->index; i++) // copia il primo set nel set resultante
-    {
-        result.elem[result.index + 1] = s1->elem[i];
-        result.index++;
-    }
+		addEl(result, s1->elem[i]);
 
-    for(i = 0; i <= s2->index; i++) // copia il primo set nel set resultante
-    {
-        if(!isIn(&result, s2->elem[i])) //aggiungere solo se non c'e in result
-        {
-            result.elem[result.index + 1] = s2->elem[i];
-            result.index++;
-        }
-    }
+    for(i = 0; i <= s2->index; i++) // copia il secondo set nel set resultante
+		addEl(result, s2->elem[i]);
+		
     return result;
 }
 
