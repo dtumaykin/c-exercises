@@ -85,10 +85,10 @@ set result;
     result.index = -1; // init new set
 
     for(i = 0; i <= s1->index; i++) // copia il primo set nel set resultante
-		addEl(result, s1->elem[i]);
+		addEl(&result, s1->elem[i]);
 
     for(i = 0; i <= s2->index; i++) // copia il secondo set nel set resultante
-		addEl(result, s2->elem[i]);
+		addEl(&result, s2->elem[i]);
 		
     return result;
 }
