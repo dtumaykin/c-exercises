@@ -9,7 +9,7 @@ typedef struct {
 } set;
 
 int isIn(const set *s, int num);
-int addEl(set *s, int new);
+int addEl(set *s, int n);
 set unione(const set *s1, const set *s2);
 
 int main() // main() non era richiesta nell'esercizio, solo le funzioni e le loro chiamate
@@ -66,11 +66,11 @@ int i;
     return 0;
 }
 
-int addEl(set *s, int new)
+int addEl(set *s, int n)
 {
-    if(!isIn(s, new))
+    if(!isIn(s, n) && s->index < N - 1)
     {
-        s->elem[++s->index] = new; //oppure in 1 sola righa: s->elem[++(s->index)] = new;
+        s->elem[++s->index] = n; //oppure in 1 sola righa: s->elem[++(s->index)] = n;
         return 1;
     }
 	
